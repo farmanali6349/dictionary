@@ -96,7 +96,7 @@ let createResultTemplate = (value) => {
 
                     if (k == 1) {
                         let phonetic;
-
+                        try{
                         if (value[0].phonetic != undefined) {
                             phonetic = value[0].phonetic;
 
@@ -106,6 +106,10 @@ let createResultTemplate = (value) => {
                         } else if (value[0].phonetics[1].text != undefined) {
                             phonetic = value[0].phonetics[1].text;
 
+                        }
+                            } catch(err) {
+                                console.log('No phonetic found.');
+                                phonetic = `/none/`;
                         }
 
                         mainListItem.textContent = phonetic;
